@@ -40,6 +40,7 @@ private:
     std::vector<VkFence> imagesInFlight;
     size_t currentFrame = 0;
     size_t totalFrames = 0;
+    bool framebufferResized = false;
 
     void initWindow();
     void initVulkan();
@@ -61,6 +62,8 @@ private:
     void createCommandPool();
     void createCommandBuffers();
     void createSyncObjects();
+    void recreateSwapChain();
+    void cleanupSwapChain();
     void drawFrame();
     std::vector<VkFramebuffer> swapChainFramebuffers;
     VkShaderModule createShaderModule(const std::vector<char>& code);
@@ -72,6 +75,7 @@ private:
     VkSurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector<VkSurfaceFormatKHR>& availableFormats);
     VkPresentModeKHR chooseSwapPresentMode(const std::vector<VkPresentModeKHR>& availablePresentModes);
     VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilities);
+    static void framebufferResizeCallback(GLFWwindow* window, int width, int height);
     static VKAPI_ATTR VkBool32 VKAPI_CALL debugCallback(VkDebugUtilsMessageSeverityFlagBitsEXT messageSeverity,
          VkDebugUtilsMessageTypeFlagsEXT messageType, const VkDebugUtilsMessengerCallbackDataEXT* pCallbackData, void* pUserData);
 };

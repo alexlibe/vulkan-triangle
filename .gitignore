@@ -1,0 +1,5 @@
+# Compiled Shaders
+shaders/*.spv
+
+# Executable
+Vulkan-Engine-Test

@@ -11,6 +11,8 @@ Vulkan-Engine: src/main.cpp
 
 release:
 	g++ $(RELEASE-CFLAGS) -o ${EXECUTABLE-NAME} $(LDFLAGS) ./src/*.cpp
+	glslangValidator -V -o shaders/shader.vert.spv shaders/shader.vert
+	glslangValidator -V -o shaders/shader.frag.spv shaders/shader.frag
 
 compile:
 	g++ $(CFLAGS) -c $(LDFLAGS) ./src/*.cpp
